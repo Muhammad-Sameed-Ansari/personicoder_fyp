@@ -1,0 +1,19 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.txt {
+    font-size: 78px;
+    text-align: center;
+}
+
+.page > button {
+    padding: 10px 25px;
+    border-radius: 50px;
+    background-color: aqua;
+    font-weight: 700;
+}
