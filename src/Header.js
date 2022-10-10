@@ -2,6 +2,11 @@ import React from 'react'
 import './Header.css'
 
 function Header() {
+    
+    const goToLogin = () => {
+
+    }
+
     return (
         <div className='header'>
             <div className='header__left'>
@@ -15,7 +20,7 @@ function Header() {
             </div>
 
             <div className='header__right'>
-                <button className='login__btn'>Login</button>
+                <button className='login__btn' onClick={goToLogin}>Login</button>
                 <button className='take__test__btn'>Take the Test</button>
             </div>
 
