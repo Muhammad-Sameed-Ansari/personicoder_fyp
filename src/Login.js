@@ -1,23 +1,30 @@
-import React from 'react'
-import Header from './Header';
+import React, { useState } from 'react'
+import Header from './Header'
+import './Login.css'
+//import Header from './Header';
 // import {useNavigate} from 'react-router-dom';
 
 export default function Login() {
-    const [email,setEmail] = React.useState("");
-    const [password,setPassword] = React.useState("");
-    // const navigate = useNavigate();
+    const [isLogin, setIsLogin] = useState(true);
 
-    const display = () => {
-
+    const register = () => {
+        setIsLogin(false);
     }
+
+    const login = () => {
+        setIsLogin(true);
+    }
+
     return (
         <div className="app">
             <Header />
-            <div >
-                <h2 className='div1'>Welcome to Login </h2>
-                <input className='Input' type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='Enter Your Email'></input>
-                <input className='Input' type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Enter Your Password'></input>
-                <button onClick={display} className='button' type='button'>Click Me</button>
+            <div className="conatiner">
+            <h2 className='div1'>Welcome to {isLogin ? "Login" : "Register"} </h2>
+                {!isLogin ? <input className='Input' type="text"  placeholder='Enter Your Name'></input> : <></>}
+                <input className='Input' type="text"  placeholder='Enter Your Email'></input>
+                <input className='Input' type="password" placeholder='Enter Your Password'></input>
+                <button className='button' type='button' onClick={login}>Login</button>
+                <button className='button' type='button' onClick={register}>Register</button>
             </div>
         </div>
   )

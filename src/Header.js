@@ -1,11 +1,9 @@
 import React from 'react'
 import './Header.css'
+import { Link } from 'react-router-dom'
 
 function Header() {
     
-    const goToLogin = () => {
-
-    }
 
     return (
         <div className='header'>
@@ -20,7 +18,7 @@ function Header() {
             </div>
 
             <div className='header__right'>
-                <button className='login__btn' onClick={goToLogin}>Login</button>
+                <button className='login__btn'><Link to="/Login">Login</Link></button>
                 <button className='take__test__btn'>Take the Test</button>
             </div>
 
