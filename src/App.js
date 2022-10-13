@@ -3,9 +3,10 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import Login from './Login';
 import SignUp from './SignUp';
+import Page from './Page';
 
 function App() {
-    // const { user } = true;
+
     return (
         <Router>
       <div className="App">
@@ -37,6 +38,7 @@ function App() {
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/page" element={<Page />} />
             </Routes>
           </div>
         </div>

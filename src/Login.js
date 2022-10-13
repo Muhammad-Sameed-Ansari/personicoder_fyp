@@ -1,15 +1,32 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { auth } from './firebase';
 import './Login.css'
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (loading) {
+          // maybe trigger a loading screen
+          return;
+        }
+        if (user) navigate("/page");
+      }, [user, loading, navigate]);
+    
 
     const handleLogIn = async () => {
         try {
-            await signInWithEmailAndPassword(auth, email, password).then(console.log("Login Success"));
+            await signInWithEmailAndPassword(auth, email, password).then(() => {
+                console.log("Login Success");
+                // navigate('/page')
+            })
         } catch (err) {
             console.error(err);
             alert(err.message);
@@ -17,7 +34,7 @@ export default function Login() {
     }
 
     return (
-        <form>
+        <div>
         <h3>Sign In</h3>
 
         <div className="mb-3">
@@ -47,6 +64,6 @@ export default function Login() {
             Submit
           </button>
         </div>
-      </form>
+      </div>
     )
 }
