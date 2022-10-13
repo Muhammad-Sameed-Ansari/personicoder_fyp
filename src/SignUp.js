@@ -1,24 +1,34 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react'
 import { auth } from './firebase';
-import './Login.css'
 
-export default function Login() {
+export default function SignUp() {
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogIn = async () => {
+    const handleSignUp = async () =>  {
         try {
-            await signInWithEmailAndPassword(auth, email, password).then(console.log("Login Success"));
+            await createUserWithEmailAndPassword(auth, email, password).then(console.log("Register Success"));
         } catch (err) {
             console.error(err);
             alert(err.message);
         }
     }
-
     return (
-        <form>
-        <h3>Sign In</h3>
+    <form>
+        <h3>Sign Up</h3>
+
+        <div className="mb-3">
+          <label>User name</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="User name"
+            value={username}
+            onInput={e => setUsername(e.target.value)}
+          />
+        </div>
 
         <div className="mb-3">
           <label>Email address</label>
@@ -43,10 +53,13 @@ export default function Login() {
         </div>
 
         <div className="d-grid">
-          <button className="btn btn-primary" onClick={handleLogIn}>
-            Submit
+          <button className="btn btn-primary" onClick={handleSignUp}>
+            Sign Up
           </button>
         </div>
+        <p className="forgot-password text-right">
+          Already registered <a href="/sign-in">sign in?</a>
+        </p>
       </form>
-    )
+  )
 }
