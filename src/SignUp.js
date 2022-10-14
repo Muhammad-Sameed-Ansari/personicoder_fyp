@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react'
 import { auth } from './firebase';
+import Navbar from './Navbar';
 
 export default function SignUp() {
     const [username, setUsername] = useState('');
@@ -16,7 +17,8 @@ export default function SignUp() {
         }
     }
     return (
-    <form>
+    <div>
+        <Navbar islogin={false} />
         <h3>Sign Up</h3>
 
         <div className="mb-3">
@@ -60,6 +62,6 @@ export default function SignUp() {
         <p className="forgot-password text-right">
           Already registered <a href="/sign-in">sign in?</a>
         </p>
-      </form>
+      </div>
   )
 }

@@ -4,6 +4,7 @@ import { auth } from './firebase';
 import './Login.css'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import Navbar from './Navbar';
 
 
 export default function Login() {
@@ -18,7 +19,7 @@ export default function Login() {
           return;
         }
         if (user) navigate("/page");
-      }, [user, loading, navigate]);
+    }, [user, loading, navigate]);
     
 
     const handleLogIn = async () => {
@@ -34,7 +35,9 @@ export default function Login() {
     }
 
     return (
+        
         <div>
+        <Navbar islogin={false} />
         <h3>Sign In</h3>
 
         <div className="mb-3">
