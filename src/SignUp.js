@@ -19,6 +19,7 @@ export default function SignUp() {
     return (
     <div>
         <Navbar islogin={false} />
+        <div style={{width: 350}}>
         <h3>Sign Up</h3>
 
         <div className="mb-3">
@@ -62,6 +63,7 @@ export default function SignUp() {
         <p className="forgot-password text-right">
           Already registered <a href="/sign-in">sign in?</a>
         </p>
+        </div>
       </div>
   )
 }

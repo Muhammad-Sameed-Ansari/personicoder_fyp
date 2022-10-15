@@ -8,7 +8,7 @@ import Navbar from './Navbar';
 
 
 export default function Login() {
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState('');
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
@@ -38,6 +38,7 @@ export default function Login() {
         
         <div>
         <Navbar islogin={false} />
+        <div style={{width: 350}} >
         <h3>Sign In</h3>
 
         <div className="mb-3">
@@ -66,6 +67,7 @@ export default function Login() {
           <button className="btn btn-primary" onClick={handleLogIn}>
             Submit
           </button>
+        </div>
         </div>
       </div>
     )

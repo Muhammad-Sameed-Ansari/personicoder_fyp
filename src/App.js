@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Login from './Login';
 import SignUp from './SignUp';
 import Page from './Page';
+import RequestAppointment from './RequestAppointment';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/page" element={<Page />} />
+              <Route path="/appointment" element={<RequestAppointment />} />
             </Routes>
           </div>
         </div>

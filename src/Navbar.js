@@ -16,7 +16,7 @@ export default function Navbar({ islogin }) {
     return (
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={'/sign-in'}>
+            <Link className="navbar-brand" to={'/page'}>
               personiCoder
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -29,6 +29,16 @@ export default function Navbar({ islogin }) {
                 {!islogin && <li className="nav-item">
                     <Link className="nav-link" to={'/sign-up'}>
                         Sign up
+                    </Link>
+                </li>}
+                {islogin && <li className="nav-item">
+                    <Link className="nav-link" to={'/appointment'} >
+                        Appointment
+                    </Link>
+                </li>}
+                {islogin && <li className="nav-item">
+                    <Link className="nav-link" >
+                        Chat
                     </Link>
                 </li>}
                 {islogin && <li className="nav-item">
