@@ -5,6 +5,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import Page from './Page';
 import RequestAppointment from './RequestAppointment';
+import ChatBox from './ChatBox';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/page" element={<Page />} />
               <Route path="/appointment" element={<RequestAppointment />} />
+              <Route path="/chat" element={<ChatBox />} />
             </Routes>
           </div>
         </div>

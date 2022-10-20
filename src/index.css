@@ -42,6 +42,7 @@ html,
   justify-content: center;
   flex-direction: column;
   text-align: left;
+  /* max-height: '50%'; */
 }
 
 .auth-inner {

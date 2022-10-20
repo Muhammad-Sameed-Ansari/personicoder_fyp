@@ -37,7 +37,7 @@ export default function Navbar({ islogin }) {
                     </Link>
                 </li>}
                 {islogin && <li className="nav-item">
-                    <Link className="nav-link" >
+                    <Link className="nav-link" to={'/chat'}>
                         Chat
                     </Link>
                 </li>}
