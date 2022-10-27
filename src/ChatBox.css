@@ -63,13 +63,19 @@
     border-top: 1px solid lightgray;
 }
 
-.chat__footer > input {
+.chat__footer > form {
     flex: 1;
     display: flex;
-    border-radius: 30px;
-    padding: 10px;
+
 }
 
-.chat__footer > button {
+.chat__footer > form > input {
+    flex: 1;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+}
+
+.chat__footer > form > button {
     display: none;
 }
