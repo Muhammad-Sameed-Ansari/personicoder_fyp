@@ -6,16 +6,29 @@ import './ChatBox.css'
 // import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from './firebase';
 import { collection, doc, getDoc, onSnapshot, orderBy, query, serverTimestamp, setDoc } from 'firebase/firestore';
+import axios from 'axios';
 
 export default function ChatBox() {
     const [username, setUsername] = useState("");
     const [input, setInput] = useState("")
     const [messages, setMessages] = useState([]);
+    const [botMessage, setBotMessage] = useState("");
 
     useEffect(() => {
         fetchUserName();
         fetchMessages();
     }, [username])
+
+    useEffect(() => {
+        const userRef = collection(db, 'users', auth.currentUser.uid, "messages");
+
+        setDoc(doc(userRef), {
+            message: botMessage,
+            name: 'bot',
+            timestamp: serverTimestamp()
+        });
+        setBotMessage("");
+    }, [botMessage]);
 
     const fetchUserName = async ()  => {
         const docRef = doc(db, "users", auth.currentUser.uid);
@@ -50,6 +63,30 @@ export default function ChatBox() {
             timestamp: serverTimestamp()
         });
         setInput("");
+
+        await axios({
+            method: "POST",
+            url:`/getData?name=${input}`,
+        })
+        .then((response) => {
+            const res = response.data
+            console.log(res.message);
+            setBotMessage(res.message);
+        })
+
+        // await setDoc(doc(userRef), {
+        //     message: botMessage,
+        //     name: 'bot',
+        //     timestamp: serverTimestamp()
+        // });
+        // setBotMessage("");
+
+
+        // axios.post('http://localhost:5000/getData', {
+        //     'name': 'hello1'
+        // }).then(response => console.log(response)).catch(err => {
+        //     console.error(err.toJSON());
+        //   });
     }
 
     return (
@@ -77,6 +114,11 @@ export default function ChatBox() {
                         <span className='chat__timestamp'>{new Date(message.timestamp?.toDate()).toUTCString()}</span>
                     </p>
                 ))}
+                {/* <p className='chat__message'>
+                    <span className='chat__name'>Saif</span>
+                    {profileData && <span>{profileData.profile_name} {profileData.about_me}</span>}
+                    <span className='chat__timestamp'>{new Date().toUTCString()}</span>
+                </p> */}
             </div>
 
             <div className='chat__footer'>
@@ -93,6 +135,8 @@ export default function ChatBox() {
                 </form>
                 <MicOutlined />
             </div>
+
+
         </div>
     )
 }
